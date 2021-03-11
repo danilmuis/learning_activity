@@ -1,4 +1,4 @@
-const db = require('../db_connection');
+const db = require('../database/db_connection');
 const express = require("express");
 const response = require('../utility/response');
 const router = express.Router();
