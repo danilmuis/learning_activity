@@ -1,6 +1,6 @@
 const db = require('../db_connection');
 const express = require("express");
-const response = require('../services/response');
+const response = require('../utility/response');
 const router = express.Router();
 router
     .route('/getActivity')
@@ -9,8 +9,16 @@ router
                 const dataActivity = await db.getAll();
                 response.responseSuccess(res,dataActivity);
             }catch(e){
-                console.log(e);
                 response.responseFailed(res);
             }
         });
+router
+    .route('/sendActivity')
+        .post(async (req, res) =>{
+            try{
+                
+            }catch(e){
+                response.responseFailed(res);
+            }
+        })
 module.exports = router;
