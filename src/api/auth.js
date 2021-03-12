@@ -4,6 +4,8 @@ const response = require('../utility/response');
 const router = express.Router();
 const jwt_auth = require('../utility/jwt_auth');
 const bcrypt = require("bcrypt");
+const passport = require("passport");
+require("../utility/google_auth");
 const emailIsValid =  (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -46,6 +48,21 @@ router
             }else{
                 response.responseUnauthorized(res);
             }
-        })        
+        });   
+router
+    .route('/googleAuth')
+        .get(
+            passport.authenticate("google", {
+                scope: ["https://www.googleapis.com/auth/plus.login", "email"],
+            })
+        );
+router
+    .route("/googleAuth/callback")
+        .get(
+            passport.authenticate("google", { failureRedirect: "/googleAuth/failed" }),
+            async (req, res) => {
+                response.responseSuccess(res,req.user);
+            }
+        );
 module.exports = router;
         
