@@ -11,7 +11,7 @@ var indexRouter = require('./api/auth');
 var methodRouter = require('./api/method');
 var subjectRouter = require('./api/subject');
 var activityRouter = require('./api/activity');
-
+var response = require('./utility/response');
 var app = express();
 
 app.use(passport.initialize());
@@ -37,7 +37,6 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  response.responseFailed(res);
 });
 module.exports = app;
