@@ -26,8 +26,6 @@ exports.up = function(knex) {
         .alterTable('users',table =>{
             table.unique('email')
         })
-
-
 };
 exports.down = function(knex) {
     return knex.schema

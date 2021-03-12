@@ -5,9 +5,8 @@ const authenticateToken = (req, res, next) => {
   try {
     jwt.verify(token, process.env.TOKEN_SECRET);
     next();
-  } catch (err) {
+  }catch(err){
     response.responseUnauthorized(res);
-
   }
 };
 
