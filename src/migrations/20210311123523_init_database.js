@@ -17,7 +17,16 @@ exports.up = function(knex) {
             table.date('start_date').notNull();
             table.date('end_date').notNull();
             table.boolean('isDeleted').defaultTo(0);
-        });
+        })
+        .createTable('users',table =>{
+            table.uuid('id').primary().defaultTo(knex.raw("uuid_generate_v4()"));
+            table.string('email').notNull();
+            table.string('password').notNull();
+        })
+        .alterTable('users',table =>{
+            table.unique('email')
+        })
+
 
 };
 exports.down = function(knex) {

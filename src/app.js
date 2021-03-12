@@ -5,6 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var jwt_auth = require('./utility/jwt_auth');
+var indexRouter = require('./api/auth');
 var methodRouter = require('./api/method');
 var subjectRouter = require('./api/subject');
 var activityRouter = require('./api/activity');
@@ -17,9 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/api/method', methodRouter);
-app.use('/api/subject', subjectRouter);
-app.use('/api/activity', activityRouter);
+app.use('/api/',indexRouter);
+app.use('/api/method',jwt_auth.authenticateToken, methodRouter);
+app.use('/api/subject',jwt_auth.authenticateToken, subjectRouter);
+app.use('/api/activity', jwt_auth.authenticateToken, activityRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
