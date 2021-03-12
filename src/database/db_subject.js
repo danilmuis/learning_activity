@@ -1,5 +1,5 @@
 const database = require("./db_connection");
-const db_name = "methods";
+const db_name = "subjects";
 const getAll = () => {
     return database(db_name).where({isDeleted:false});
 }
