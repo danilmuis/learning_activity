@@ -14,12 +14,12 @@
 ```sh
 cp .env.example .env
 npm install
+npm run genkey
 ```
 
 ## Usage
 
 ```sh
-npm run genkey
 npm run start
 ```
 
