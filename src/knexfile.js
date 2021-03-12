@@ -10,15 +10,9 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: koneksi,
-    migrations:{
-      extension:'uuid-ossp'
-    }
   },
   production: {
     client: 'postgresql',
     connection: koneksi,
-    migrations:{
-      extension:'uuid-ossp'
-    }
   }
 };

@@ -2,6 +2,7 @@ const database_methods = require('../database/db_method');
 const express = require("express");
 const response = require('../utility/response');
 const router = express.Router();
+
 router
     .route('/')
         .get(async (req, res) =>{
@@ -20,7 +21,16 @@ router
                 response.responseFailed(res);
             }
         });
-
+        router
+        .route('/trash')
+            .get(async (req, res)=>{
+                try{
+                    const allDeletedMethods = await database_methods.getDeletedAll();
+                    response.responseSuccess(res,allDeletedMethods);
+                }catch(e){
+                    response.responseFailed(res);
+                }
+            });     
 router
     .route('/:id')
         .get(async (req, res)=>{
@@ -46,9 +56,10 @@ router
             }catch(e){
                 response.responseFailed(res);
             }
-        })
+        });
+
 router
-    .route('/del4ever/:id')
+    .route('/delPermanent/:id')
         .delete(async (req, res)=>{
             try{
                 await database_methods.deletePermanentById(req.params.id);
@@ -56,7 +67,8 @@ router
             }catch(e){
                 response.responseFailed(res);
             }
-        })
+        });
+
 router
     .route('/recovery/:id')
         .put(async (req, res)=>{
@@ -66,6 +78,8 @@ router
             }catch(e){
                 response.responseFailed(res);
             }
-        })
+        });
+
+
     
 module.exports = router;

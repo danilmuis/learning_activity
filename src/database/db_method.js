@@ -6,16 +6,19 @@ const insert = (data) =>{
     return database.insert(data).into('methods');
 }
 const getById = (id) => {
-    return database('methods').where({id});
+    return database('methods').where({id,isDeleted:false});
 }
 const updateById = (id,newData) => {
-    return database('methods').where({id}).update(newData);
+    return database('methods').where({id,isDeleted:false}).update(newData);
 }
 const deleteById = (id)=>{
     return database('methods').where({id}).update({isDeleted:true});
 }
 const deletePermanentById = (id) => {
     return database('methods').where({id}).del();
+}
+const getDeletedAll = () => {
+    return database('methods').where({isDeleted:true});
 }
 const recoveryDeletedById = (id) => {
     return database('methods').where({id}).update({isDeleted:false});
@@ -27,5 +30,6 @@ module.exports = {
     updateById,
     deleteById,
     deletePermanentById,
-    recoveryDeletedById
+    recoveryDeletedById,
+    getDeletedAll
 }
