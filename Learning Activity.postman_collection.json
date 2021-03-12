@@ -260,7 +260,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:4444/api/method/trash",
+							"raw": "http://127.0.0.1:4444/api/activity/trash",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -271,7 +271,7 @@
 							"port": "4444",
 							"path": [
 								"api",
-								"method",
+								"activity",
 								"trash"
 							]
 						}
@@ -284,7 +284,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:4444/api/method/6a7e82c6-50c4-42d2-bf8d-4250e89a0385",
+							"raw": "http://127.0.0.1:4444/api/activity/45176f7b-edd4-467d-b4aa-aaa314ea650c",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -295,8 +295,8 @@
 							"port": "4444",
 							"path": [
 								"api",
-								"method",
-								"6a7e82c6-50c4-42d2-bf8d-4250e89a0385"
+								"activity",
+								"45176f7b-edd4-467d-b4aa-aaa314ea650c"
 							]
 						}
 					},
@@ -311,13 +311,13 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "id_subject",
-									"value": "3a5c36ab-613b-49d1-bc7c-1613f081be52",
+									"key": "id_method",
+									"value": "71b3c67c-efea-4019-9511-b55d2d2404a8",
 									"type": "text"
 								},
 								{
-									"key": "id_method",
-									"value": "63e0daeb-c992-4ec9-9ffe-3fabc1de6f16",
+									"key": "id_subject",
+									"value": "73f8e4df-cd98-43f2-bdc8-25a8333007bc",
 									"type": "text"
 								},
 								{
@@ -359,20 +359,19 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "method_name",
-									"value": "Update12",
+									"key": "start_date",
+									"value": "2020-10-10",
 									"type": "text"
 								},
 								{
-									"key": "id",
-									"value": "10",
-									"type": "text",
-									"disabled": true
+									"key": "end_date",
+									"value": "2020-10-15",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:4444/api/method/339072ba-d09e-447f-8784-a073163ed1ec",
+							"raw": "http://127.0.0.1:4444/api/activity/45176f7b-edd4-467d-b4aa-aaa314ea650c",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -383,8 +382,8 @@
 							"port": "4444",
 							"path": [
 								"api",
-								"method",
-								"339072ba-d09e-447f-8784-a073163ed1ec"
+								"activity",
+								"45176f7b-edd4-467d-b4aa-aaa314ea650c"
 							]
 						}
 					},
@@ -396,7 +395,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:4444/api/method/recovery/339072ba-d09e-447f-8784-a073163ed1ec",
+							"raw": "http://127.0.0.1:4444/api/activity/recovery/45176f7b-edd4-467d-b4aa-aaa314ea650c",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -407,9 +406,9 @@
 							"port": "4444",
 							"path": [
 								"api",
-								"method",
+								"activity",
 								"recovery",
-								"339072ba-d09e-447f-8784-a073163ed1ec"
+								"45176f7b-edd4-467d-b4aa-aaa314ea650c"
 							]
 						}
 					},
@@ -421,7 +420,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:4444/api/method/339072ba-d09e-447f-8784-a073163ed1ec",
+							"raw": "http://127.0.0.1:4444/api/activity/45176f7b-edd4-467d-b4aa-aaa314ea650c",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -432,8 +431,8 @@
 							"port": "4444",
 							"path": [
 								"api",
-								"method",
-								"339072ba-d09e-447f-8784-a073163ed1ec"
+								"activity",
+								"45176f7b-edd4-467d-b4aa-aaa314ea650c"
 							]
 						}
 					},
@@ -445,7 +444,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:4444/api/method/delPermanent/339072ba-d09e-447f-8784-a073163ed1ec",
+							"raw": "http://127.0.0.1:4444/api/activity/delPermanent/45176f7b-edd4-467d-b4aa-aaa314ea650c",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -456,9 +455,9 @@
 							"port": "4444",
 							"path": [
 								"api",
-								"method",
+								"activity",
 								"delPermanent",
-								"339072ba-d09e-447f-8784-a073163ed1ec"
+								"45176f7b-edd4-467d-b4aa-aaa314ea650c"
 							]
 						}
 					},
