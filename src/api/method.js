@@ -21,16 +21,16 @@ router
                 response.responseFailed(res);
             }
         });
-        router
-        .route('/trash')
-            .get(async (req, res)=>{
-                try{
-                    const allDeletedMethods = await database_methods.getDeletedAll();
-                    response.responseSuccess(res,allDeletedMethods);
-                }catch(e){
-                    response.responseFailed(res);
-                }
-            });     
+router
+    .route('/trash')
+        .get(async (req, res)=>{
+            try{
+                const allDeletedMethods = await database_methods.getDeletedAll();
+                response.responseSuccess(res,allDeletedMethods);
+            }catch(e){
+                response.responseFailed(res);
+            }
+        });     
 router
     .route('/:id')
         .get(async (req, res)=>{

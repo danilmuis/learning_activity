@@ -19,9 +19,7 @@ router
             }catch(e){
                 response.responseFailed(res);
             }
-        });
-router
-    .route('/')
+        })
         .post(async (req, res) =>{
             try{
                 if(await checkDeleted(req.body)){
@@ -33,5 +31,70 @@ router
             }catch(e){
                 response.responseFailed(res);
             }
+        });
+router
+    .route('/trash')
+        .get(async (req, res)=>{
+            try{
+                const allDeletedActivities = await database_activities.getDeletedAll();
+                response.responseSuccess(res,allDeletedActivities);
+            }catch(e){
+                response.responseFailed(res);
+            }
+        });    
+router
+    .route('/:id')
+        .get(async (req, res) =>{
+            try{
+                const activityFound = await database_activities.getById(req.params.id);
+                response.responseSuccess(res,activityFound);
+            }catch(e){
+                response.responseFailed(res);
+            }
         })
+        .put(async (req, res) =>{
+            try{
+                const newData = {
+                    start_date:req.body.start_date,
+                    end_date:req.body.end_date
+                }
+                const result = await database_activities.updateById(req.params.id,newData);
+                result == 1 ? response.responseSuccess(res,req.body) : response.responseFailed(res);
+                
+            }catch(e){
+                console.log(e);
+                response.responseFailed(res);
+            }
+        })
+        .delete(async (req, res)=>{
+            try{
+                const result = await database_activities.deleteById(req.params.id);
+                result == 1 ? response.responseSuccess(res,{id:req.params.id,status:'Deleted'}) : response.responseFailed(res);
+            }catch(e){
+                response.responseFailed(res);
+            }
+        });
+router
+    .route('/delPermanent/:id')
+        .delete(async (req, res)=>{
+            try{
+                const result = await database_activities.deletePermanentById(req.params.id);
+                result == 1 ? response.responseSuccess(res,{id:req.params.id,status:'Permanent Deleted'}) : response.responseFailed(res);
+            }catch(e){
+                response.responseFailed(res);
+            }
+        });
+    
+router
+    .route('/recovery/:id')
+        .put(async (req, res)=>{
+            try{
+                const result = await database_activities.recoveryDeletedById(req.params.id);
+                result == 1 ? response.responseSuccess(res,{id:req.params.id,status:'Recovered'}) : response.responseFailed(res);
+            }catch(e){
+                response.responseFailed(res);
+            }
+        });
+    
+           
 module.exports = router;
