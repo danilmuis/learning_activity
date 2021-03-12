@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 var methodRouter = require('./api/method');
 var subjectRouter = require('./api/subject');
+var activityRouter = require('./api/activity');
 
 var app = express();
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/method', methodRouter);
 app.use('/api/subject', subjectRouter);
+app.use('/api/activity', activityRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
